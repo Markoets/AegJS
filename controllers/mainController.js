@@ -1,12 +1,12 @@
-exports.getMainPage =  (request, response)=>{
-    Wish.fetchWishes(wishes =>{
-        console.log(wishes);
+const date = require('../getDate.js');
+const Date = require('../models/date')
 
 
-
-        let today = date.getDate();
-        response.render('index', {dateToRender: today, myWishes: wishes});
+exports.getMainPage = (request,response)=>{
+    Date.fetchLogs(logs =>{
+        let time = date.getDate();
+        response.render('index',{Time: time, Logs: logs});
+        let newLog = new Date(time);
+        newLog.saveDate();
     })
-
-
 }
